@@ -1,0 +1,23 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import sticker from '../../brand/logo/sticker.png';
+---
+<Base title="About" description="Who makes Silly Willy Apps, and why there are no ads.">
+  <div class="about">
+    <h1>Hi, I'm Paul.</h1>
+    <p>I grew up with games that had a beginning and an end. You played them, you finished them, and nothing popped up in the middle asking you to buy a season pass.</p>
+    <p>By day I'm a software engineer in education technology. It's work I care about. But big projects come with a lot of process, and sometimes an idea just wants to be built on a Tuesday night.</p>
+    <p>That's what Silly Willy is: the apps and games I make after hours, because I want them to exist. No ads, ever. Some have a small optional purchase; some you just buy once and play it all.</p>
+    <p>If you've played one of them, thank you. Really. That's the best part.</p>
+    <p class="sign hand">— Paul</p>
+  </div>
+  <Image src={sticker} alt="Silly Willy, apps &amp; games" width={260} densities={[1, 2]} class="sticker" />
+</Base>
+
+<style>
+  .about { max-width: 620px; }
+  .about p { font-size: 18px; }
+  .sign { font-size: 30px; margin-top: 8px; }
+  .sticker { display: block; margin: 32px 0 0; }
+</style>

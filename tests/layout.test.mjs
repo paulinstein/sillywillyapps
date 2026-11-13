@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { DIST, allFiles, readPage, sizeOf } from './helpers.mjs';
 
-const ALLOWED_HOSTS = ['sillywillyapps.com', 'dogstories.sillywillyapps.com', 'apps.apple.com', 'play.google.com'];
+const ALLOWED_HOSTS = ['sillywillyapps.com', 'dogstories.sillywillyapps.com', 'apps.apple.com', 'play.google.com', 'docs.github.com'];
 
 test('no third-party requests', () => {
   const textFiles = allFiles().filter((f) => /\.(html|css|js)$/.test(f));

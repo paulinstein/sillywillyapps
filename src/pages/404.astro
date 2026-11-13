@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Page not found" description="This page wandered off.">
+  <div class="lost">
+    <p class="hand big">Whoops!</p>
+    <h1>This page wandered off.</h1>
+    <p>It was here a minute ago. Probably. Maybe it went to find a snack.</p>
+    <p><a href="/">Take me home</a> · <a href="/blog/">Read the blog</a></p>
+  </div>
+</Base>
+
+<style>
+  .lost { text-align: center; padding: 40px 0; }
+  .big { font-size: 44px; margin: 0; color: var(--coral); transform: rotate(-4deg); display: inline-block; }
+  .lost h1 { margin-top: 0.2em; }
+</style>
