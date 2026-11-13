@@ -1,0 +1,93 @@
+:root {
+  --navy: #1f2a44;
+  --yellow: #ffd84d;
+  --coral: #e8604c;
+  --cream: #fbf6ea;
+
+  --bg: #fbf6ea;
+  --surface: #ffffff;
+  --text: #1f2a44;
+  --muted: #5b6275;
+  --line: #e7dfcc;
+  --link: #1f2a44;
+  --link-underline: #e8604c;
+
+  --serif: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --hand: 'Caveat Brush', 'Marker Felt', 'Comic Sans MS', cursive;
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #151b2c;
+    --surface: #1e2638;
+    --text: #f3eedf;
+    --muted: #a9b0c2;
+    --line: #2e3850;
+    --link: #f3eedf;
+    --link-underline: #ffd84d;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.65 var(--sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; width: 100%; max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-variation-settings: 'SOFT' 100, 'WONK' 1;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 1.6em 0 0.4em;
+}
+h1 { font-size: clamp(32px, 6vw, 46px); margin-top: 0.6em; }
+h2 { font-size: 28px; }
+h3 { font-size: 21px; }
+p { margin: 0 0 1em; }
+
+a { color: var(--link); text-decoration-color: var(--link-underline); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 3px; }
+
+img { max-width: 100%; height: auto; }
+
+code { font-size: 0.9em; background: var(--surface); border: 1px solid var(--line); border-radius: 5px; padding: 0.1em 0.35em; }
+pre { background: var(--navy); color: var(--cream); padding: 16px; border-radius: 10px; overflow-x: auto; font-size: 14px; }
+pre code { background: none; border: 0; padding: 0; color: inherit; }
+blockquote { margin: 1em 0; padding: 0.2em 1em; border-left: 4px solid var(--yellow); color: var(--muted); }
+
+.muted { color: var(--muted); }
+.hand { font-family: var(--hand); }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; min-width: 0; }
+
+.tag {
+  display: inline-block;
+  font-size: 13px;
+  padding: 1px 10px;
+  border-radius: 999px;
+  background: var(--yellow);
+  color: var(--navy);
+  text-decoration: none;
+  margin: 0 4px 4px 0;
+}
+
+/* Logo swap: wordmark on light, sticker on dark (the wordmark's scribble fringes on dark). */
+.logo-dark { display: none; }
+@media (prefers-color-scheme: dark) {
+  .logo-light { display: none; }
+  .logo-dark { display: inline-block; }
+}

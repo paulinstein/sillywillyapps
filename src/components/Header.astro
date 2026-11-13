@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import wordmark from '../../brand/logo/wordmark.png';
+import sticker from '../../brand/logo/sticker.png';
+
+const links = [
+  { href: '/apps/', label: 'Apps' },
+  { href: '/blog/', label: 'Blog' },
+  { href: '/about/', label: 'About' },
+];
+const current = Astro.url.pathname;
+---
+<header class="site-header">
+  <a href="/" class="home" aria-label="Silly Willy Apps, home">
+    <span class="logo-light"><Image src={wordmark} alt="Silly Willy" width={200} densities={[1, 2]} loading="eager" /></span>
+    <span class="logo-dark"><Image src={sticker} alt="Silly Willy" width={130} densities={[1, 2]} loading="eager" /></span>
+  </a>
+  <nav aria-label="Main">
+    {links.map((l) => (
+      <a href={l.href} aria-current={current.startsWith(l.href) ? 'page' : undefined}>{l.label}</a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  .site-header {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .home { display: inline-flex; line-height: 0; }
+  .home img { display: block; }
+  nav { display: flex; gap: 18px; font-weight: 600; }
+  nav a { text-decoration: none; padding: 4px 2px; border-bottom: 3px solid transparent; }
+  nav a:hover, nav a[aria-current='page'] { border-bottom-color: var(--yellow); }
+</style>

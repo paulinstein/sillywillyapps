@@ -1,0 +1,51 @@
+---
+import '@fontsource-variable/fraunces/full.css';
+import '@fontsource/dm-sans/400.css';
+import '@fontsource/dm-sans/600.css';
+import '@fontsource/caveat-brush/400.css';
+import '../styles/brand.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+
+const { title, description, ogImage = '/og.png' } = Astro.props;
+const fullTitle = title === 'Silly Willy Apps' ? title : `${title} · Silly Willy Apps`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogUrl = new URL(ogImage, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="application/rss+xml" title="Silly Willy Apps" href="/rss.xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#FBF6EA" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#151B2C" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Silly Willy Apps" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
