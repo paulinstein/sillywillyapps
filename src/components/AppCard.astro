@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import type { App } from '../data/apps';
+
+interface Props {
+  app: App;
+}
+const { app } = Astro.props;
+const hasStores = Boolean(app.appStore || app.googlePlay);
+---
+<article class="card app">
+  <Image src={app.icon} alt="" width={80} densities={[1, 2]} class="icon" />
+  <div class="info">
+    <h3>{app.name}</h3>
+    <p>{app.pitch}</p>
+    <p class="links">
+      <a class="button" href={app.website}>Visit {app.name}</a>
+      {app.appStore && <a class="button ghost" href={app.appStore}>App Store</a>}
+      {app.googlePlay && <a class="button ghost" href={app.googlePlay}>Google Play</a>}
+    </p>
+    {!hasStores && <p class="soon muted">Coming soon to the App Store and Google Play</p>}
+  </div>
+</article>
+
+<style>
+  .app { display: flex; gap: 16px; align-items: flex-start; }
+  .icon { border-radius: 18px; flex: none; width: 80px; height: 80px; }
+  .info { min-width: 0; }
+  h3 { margin: 0 0 4px; }
+  p { margin: 0 0 10px; }
+  .links { display: flex; flex-wrap: wrap; gap: 8px; }
+  .button {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--navy);
+    border: 2px solid var(--navy);
+    box-shadow: 3px 3px 0 var(--navy);
+    border-radius: 10px;
+    padding: 4px 14px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+  }
+  .button:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--navy); }
+  .button.ghost { background: var(--cream); }
+  .soon { font-size: 14px; margin: 0; }
+  @media (max-width: 420px) { .app { flex-direction: column; } }
+</style>

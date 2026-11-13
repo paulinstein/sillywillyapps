@@ -1,0 +1,20 @@
+---
+import AppCard from './AppCard.astro';
+import { apps, showComingSomeday } from '../data/apps';
+---
+<div class="app-grid">
+  {apps.map((app) => <AppCard app={app} />)}
+  {showComingSomeday && (
+    <div class="card someday">
+      <p class="hand">Next app:</p>
+      <p class="muted">coming someday. I'm working on it. Probably.</p>
+    </div>
+  )}
+</div>
+
+<style>
+  .app-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+  .someday { border-style: dashed; display: flex; flex-direction: column; justify-content: center; text-align: center; }
+  .someday p { margin: 0; }
+  .someday .hand { font-size: 28px; }
+</style>

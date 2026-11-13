@@ -1,6 +1,43 @@
 ---
 import Base from '../layouts/Base.astro';
+import AppGrid from '../components/AppGrid.astro';
+import PostList from '../components/PostList.astro';
+import { getPublishedPosts } from '../lib/posts';
+
+const latest = (await getPublishedPosts()).slice(0, 3);
 ---
 <Base title="Silly Willy Apps" description="Fun, clean, useful apps and games. No ads. Just fun things I like making.">
-  <h1>Silly Willy Apps</h1>
+  <section class="hero">
+    <h1>Apps &amp; games, the way they used to be fun.</h1>
+    <p class="promise">No ads. Just fun things I like making.</p>
+  </section>
+
+  <section>
+    <h2>Apps</h2>
+    <AppGrid />
+  </section>
+
+  {latest.length > 0 && (
+    <section id="latest">
+      <h2>Latest from the blog</h2>
+      <PostList posts={latest} />
+      <p><a href="/blog/">All posts →</a></p>
+    </section>
+  )}
 </Base>
+
+<style>
+  .hero { padding: 24px 0 8px; }
+  .hero h1 { max-width: 16ch; }
+  .promise { font-size: 20px; }
+  .promise::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 6px;
+    margin-top: 10px;
+    border-radius: 6px;
+    background: var(--coral);
+    transform: rotate(-1.5deg);
+  }
+</style>
