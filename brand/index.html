@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Silly Willy Brand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat+Brush&family=DM+Sans:wght@400;600&family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,400..800,0..100,0..1;1,9..144,400..800,0..100,0..1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#1F2A44; --yellow:#FFD84D; --coral:#E8604C; --cream:#FBF6EA;
+    --bg:#FBF6EA; --surface:#FFFFFF; --text:#1F2A44; --muted:#5B6275; --line:#E7DFCC;
+    --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+    --hand:'Caveat Brush', 'Marker Felt', 'Comic Sans MS', cursive;
+    --sans:'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#151B2C; --surface:#1E2638; --text:#F3EEDF; --muted:#A9B0C2; --line:#2E3850; }
+  }
+  :root[data-theme="dark"] { --bg:#151B2C; --surface:#1E2638; --text:#F3EEDF; --muted:#A9B0C2; --line:#2E3850; }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 var(--sans); }
+  main { max-width:920px; margin:0 auto; padding:24px 16px 80px; }
+  h1,h2,h3 { font-family:var(--serif); font-variation-settings:'SOFT' 100,'WONK' 1; line-height:1.15; }
+  h2 { font-size:28px; margin:64px 0 8px; }
+  h3 { font-size:19px; margin:0 0 6px; }
+  p { margin:0 0 12px; }
+  .lead { font-size:19px; max-width:640px; }
+  .muted { color:var(--muted); }
+  .note { font-size:13px; color:var(--muted); }
+  .grid { display:grid; gap:16px; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; min-width:0; }
+
+  /* "Paper" stays cream in both themes so the navy ink is always readable */
+  .paper { background:var(--cream); background-image:radial-gradient(#00000009 1px, transparent 1px); background-size:6px 6px;
+           border-radius:10px; padding:28px 16px; display:flex; align-items:center; justify-content:center; min-height:180px; color:var(--navy); overflow:hidden; }
+  .paper img { max-width:100%; max-height:200px; }
+
+  /* Mockups: stand-ins until the ChatGPT art arrives */
+  .bounce span { display:inline-block; }
+  .wordmark { font-family:var(--serif); font-variation-settings:'SOFT' 100,'WONK' 1; font-weight:750; color:var(--navy); line-height:1; position:relative; white-space:nowrap; }
+  .wordmark .scribble { position:absolute; left:-6%; top:-12%; width:58%; height:120%; filter:url(#crayon); opacity:var(--scribble-opacity,.6); }
+  .wordmark .word { position:relative; }
+  .sticker { display:inline-block; background:var(--yellow); border:3px solid var(--navy); border-radius:26px 32px 28px 24px; box-shadow:5px 6px 0 var(--navy);
+             transform:rotate(-3deg); filter:url(#wobble); padding:12px 24px 10px; text-align:center; color:var(--navy); }
+  .sticker .hand { font-family:var(--hand); line-height:1; }
+  .sticker .sub { font-family:var(--serif); font-style:italic; font-size:15px; }
+  .mono { width:84px; height:84px; padding:0; display:flex; align-items:center; justify-content:center; border-radius:20px; }
+
+  .stamp-demo { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+  .stamp { display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); }
+  .stamp .sticker { padding:3px 10px 2px; box-shadow:2px 2px 0 var(--navy); border-width:2px; border-radius:10px 12px 11px 9px; }
+
+  .swatches { display:flex; flex-wrap:wrap; gap:16px; }
+  .swatch { flex:1 1 180px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface); }
+  .swatch .chip { height:72px; }
+  .swatch div:last-child { padding:10px 12px; font-size:14px; }
+  .swatch code { font-size:13px; }
+
+  .rules { list-style:none; padding:0; margin:8px 0 0; font-size:14px; }
+  .rules li { padding-left:22px; position:relative; margin-bottom:4px; }
+  .rules .yes::before { content:"✓"; position:absolute; left:0; color:#2FA36B; font-weight:600; }
+  .rules .no::before { content:"✕"; position:absolute; left:0; color:var(--coral); font-weight:600; }
+
+  .voice { display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:15px; }
+  .voice div { padding:10px 12px; border-radius:10px; border:1px solid var(--line); background:var(--surface); }
+  .voice .say { border-left:4px solid #2FA36B; }
+  .voice .skip { border-left:4px solid var(--coral); color:var(--muted); }
+  .voice .head { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); border:0; background:none; padding:0 2px; }
+  @media (max-width:560px) { .voice { grid-template-columns:1fr; } .voice .head:nth-child(2) { display:none; } }
+
+  .taglines li { font-family:var(--serif); font-size:20px; margin-bottom:6px; }
+  .about { background:var(--cream); color:var(--navy); border-radius:14px; padding:24px; max-width:640px; }
+  .about h3 { font-size:24px; }
+  .about .sign { font-family:var(--hand); font-size:26px; }
+  header { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; padding-bottom:16px; border-bottom:1px solid var(--line); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="crayon"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.2"/></filter>
+  <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="3"/></filter>
+</svg>
+
+<main>
+  <header>
+    <div class="paper" style="min-height:0;padding:14px 18px;background:none">
+      <span class="wordmark bounce" style="font-size:34px;color:var(--text);--scribble-opacity:.9">
+        <svg class="scribble" viewBox="0 0 100 50" preserveAspectRatio="none"><path d="M5 45 L25 5 M18 48 L42 4 M34 48 L58 4 M50 48 L74 4 M66 48 L90 6 M80 46 L98 14" stroke="#FFD84D" stroke-width="9" stroke-linecap="round" fill="none"/></svg>
+        <span class="word"><span style="transform:rotate(-5deg)">S</span><span style="transform:translateY(3px)">i</span><span>l</span><span style="transform:translateY(-2px)">l</span><span>y</span> <span style="transform:rotate(3deg)">W</span><span style="transform:translateY(2px)">i</span><span>l</span><span>l</span><span style="transform:rotate(5deg)">y</span></span>
+      </span>
+    </div>
+    <span class="note">Brand guide · v1 · November 2026</span>
+  </header>
+
+  <h2>Why Silly Willy exists</h2>
+  <p class="lead">Remember when games had a beginning and an end, and nothing cluttered the screen? Silly Willy Apps makes fun, clean, useful apps and games like that, after hours, just for the joy of it.</p>
+  <p>By day I'm a software engineer in education technology. At night I get to follow my own ideas without the process that big projects need. It's a hobby, not a movement. If someone out there enjoys what I made, that's the whole point.</p>
+  <p><strong>The promise:</strong> No ads. Just fun things I like making.</p>
+  <p class="muted">Small optional purchases (like extra energy) and pay-once games are fine. Ads never are.</p>
+
+  <h2>The logo system</h2>
+  <p class="muted">Two pieces that work as a pair: a calm <b>wordmark</b>, and a playful <b>sticker</b>. Each logo below is a code mockup until the ChatGPT art is saved in <code>brand/logo/</code>, when the real file shows up here on its own.</p>
+
+  <div class="grid" style="margin-top:16px">
+    <div class="card">
+      <div class="paper">
+        <img src="logo/wordmark.png" alt="Silly Willy wordmark" hidden onload="this.hidden=false;this.nextElementSibling.hidden=true">
+        <span class="wordmark bounce" style="font-size:44px">
+          <svg class="scribble" viewBox="0 0 100 50" preserveAspectRatio="none"><path d="M5 45 L25 5 M18 48 L42 4 M34 48 L58 4 M50 48 L74 4 M66 48 L90 6 M80 46 L98 14" stroke="#FFD84D" stroke-width="9" stroke-linecap="round" fill="none"/></svg>
+          <span class="word"><span style="transform:rotate(-5deg)">S</span><span style="transform:translateY(4px)">i</span><span>l</span><span style="transform:translateY(-3px) rotate(4deg)">l</span><span style="transform:rotate(-3deg)">y</span> <span style="transform:rotate(3deg)">W</span><span style="transform:translateY(3px)">i</span><span style="transform:rotate(-4deg)">l</span><span>l</span><span style="transform:translateY(-2px) rotate(5deg)">y</span></span>
+        </span>
+      </div>
+      <h3 style="margin-top:14px">Wordmark</h3>
+      <p class="muted">A soft, chunky serif whose letters won't stay in line, with a yellow crayon scribble behind "Silly". The grown-up one.</p>
+      <ul class="rules">
+        <li class="yes">Website header, blog, email signature</li>
+        <li class="yes">Anywhere it needs to sit calmly next to words</li>
+        <li class="no">Tiny sizes (use the monogram)</li>
+        <li class="no">Adding "Apps" to it: the domain already says that</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="paper">
+        <img src="logo/sticker.png" alt="Silly Willy sticker logo" hidden onload="this.hidden=false;this.nextElementSibling.hidden=true">
+        <span class="sticker"><span class="hand" style="font-size:40px">Silly Willy</span><br><span class="sub">apps &amp; games</span></span>
+      </div>
+      <h3 style="margin-top:14px">Sticker</h3>
+      <p class="muted">Hand lettering on a crooked, hand-cut yellow badge with a chunky navy shadow. The playful one.</p>
+      <ul class="rules">
+        <li class="yes">Social avatars, favicon, merch, the app stamp</li>
+        <li class="yes">Slightly tilted, as if slapped on a folder</li>
+        <li class="no">Straightened, recoloured or stretched</li>
+        <li class="no">On a busy photo with no plain space around it</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="paper">
+        <img src="logo/monogram.png" alt="SW monogram" hidden onload="this.hidden=false;this.nextElementSibling.hidden=true" style="max-height:120px">
+        <span class="sticker mono"><span class="hand" style="font-size:38px">SW</span></span>
+      </div>
+      <h3 style="margin-top:14px">Monogram</h3>
+      <p class="muted">"SW" on a small sticker for tight spaces.</p>
+      <ul class="rules">
+        <li class="yes">Favicon, profile pictures, watermark corners</li>
+        <li class="no">Replacing the full name where there's room for it</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>The app stamp</h2>
+  <p class="muted">Each app keeps its own look. Silly Willy only shows up as a small stamp: at the bottom of a store listing, in the credits, or on the app's own web page.</p>
+  <div class="card stamp-demo" style="margin-top:12px">
+    <div>
+      <div style="font-family:var(--serif);font-size:22px;font-weight:700">Dog Stories</div>
+      <div class="stamp">made by <span class="sticker"><span class="hand" style="font-size:16px">Silly Willy</span></span></div>
+    </div>
+  </div>
+  <p class="note" style="margin-top:8px">In plain text, it reads: <b>Dog Stories · a Silly Willy app</b></p>
+
+  <h2>Colours</h2>
+  <div class="swatches">
+    <div class="swatch"><div class="chip" style="background:#1F2A44"></div><div><b>Ink navy</b> <code>#1F2A44</code><br><span class="muted">Text, outlines, shadows</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#FFD84D"></div><div><b>Crayon yellow</b> <code>#FFD84D</code><br><span class="muted">The main colour: scribbles, stickers</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#E8604C"></div><div><b>Coral</b> <code>#E8604C</code><br><span class="muted">Small accents, buttons. Not for small text on cream</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#FBF6EA;border-bottom:1px solid var(--line)"></div><div><b>Paper cream</b> <code>#FBF6EA</code><br><span class="muted">Backgrounds, like a sheet of paper</span></div></div>
+  </div>
+
+  <h2>Type</h2>
+  <div class="grid">
+    <div class="card"><div style="font-family:var(--serif);font-variation-settings:'SOFT' 100,'WONK' 1;font-weight:700;font-size:30px">Fraunces</div><p class="muted">Headings. A soft, slightly wonky serif. Free on Google Fonts.</p></div>
+    <div class="card"><div style="font-family:var(--sans);font-size:26px;font-weight:600">DM Sans</div><p class="muted">Body text and buttons. Clean and easy to read. Free on Google Fonts.</p></div>
+    <div class="card"><div style="font-family:var(--hand);font-size:32px">Caveat Brush</div><p class="muted">Tiny handwritten notes only ("new!", a signature). Never paragraphs.</p></div>
+  </div>
+
+  <h2>How Silly Willy sounds</h2>
+  <p class="muted">Like a friendly engineer telling you about a weekend project. Warm, a bit self-mocking, never snarky, never salesy. Short sentences. Fine for a kid to read.</p>
+  <div class="voice" style="margin-top:12px">
+    <div class="head">Say it like this</div><div class="head">Not like this</div>
+    <div class="say">"Dog Stories has 45 chapters, and yes, I cried writing some of them."</div>
+    <div class="skip">"Experience the most emotional dog adventure ever made!"</div>
+    <div class="say">"No ads. You can buy extra energy if you're impatient. I am."</div>
+    <div class="skip">"Unlock premium energy packs for the ultimate experience."</div>
+    <div class="say">"Fixed a bug where Rocky walked through walls. He's a Frenchie, not a ghost."</div>
+    <div class="skip">"Various bug fixes and performance improvements."</div>
+    <div class="say">"I made this because I wanted it to exist."</div>
+    <div class="skip">"We're on a mission to save gaming from the ad industry."</div>
+  </div>
+  <ul class="rules" style="margin-top:14px">
+    <li class="yes">Joke about yourself, never about the player</li>
+    <li class="yes">Say "I", not "we": it's one person making these</li>
+    <li class="no">Words like "ultimate", "epic" or "revolutionary"</li>
+    <li class="no">Body-part jokes about the name. Let the rhyme be the joke</li>
+  </ul>
+
+  <h2>Taglines to try</h2>
+  <ul class="taglines">
+    <li>Apps &amp; games, the way they used to be fun.</li>
+    <li>Seriously un-serious apps.</li>
+    <li>Made after hours, made with joy.</li>
+    <li>No ads. Just fun things I like making.</li>
+  </ul>
+  <p class="note">Pick one for the website. The others can show up in blog posts and store listings.</p>
+
+  <h2>About Me (draft)</h2>
+  <div class="about">
+    <h3>Hi, I'm Paul.</h3>
+    <p>I grew up with games that had a beginning and an end. You played them, you finished them, and nothing popped up in the middle asking you to buy a season pass.</p>
+    <p>By day I'm a software engineer in education technology. It's work I care about. But big projects come with a lot of process, and sometimes an idea just wants to be built on a Tuesday night.</p>
+    <p>That's what Silly Willy is: the apps and games I make after hours, because I want them to exist. No ads, ever. Some have a small optional purchase; some you just buy once and play it all.</p>
+    <p>If you've played one of them, thank you. Really. That's the best part.</p>
+    <p class="sign">— Paul</p>
+  </div>
+</main>
+</body>
+</html>
