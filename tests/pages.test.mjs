@@ -19,3 +19,9 @@ test('social preview', () => {
   assert.match(readPage('/'), /<meta property="og:image" content="https:\/\/sillywillyapps\.com\/og\.png"/);
   assert.ok(exists('og.png'));
 });
+
+test('no double-escaped text', () => {
+  for (const page of ['/', 'about/', 'apps/', 'blog/']) {
+    assert.doesNotMatch(readPage(page), /&amp;amp;/, `${page} has double-escaped "&"`);
+  }
+});
