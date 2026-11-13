@@ -1,0 +1,16 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostList from '../../components/PostList.astro';
+import { getPublishedPosts, getTags } from '../../lib/posts';
+
+const posts = await getPublishedPosts();
+const tags = await getTags();
+---
+<Base title="Blog" description="Dev stories and new-app news from Silly Willy Apps.">
+  <h1>Blog</h1>
+  <p class="muted">Dev stories, new apps, and the occasional bug I'm a little proud of. Follow along with <a href="/rss.xml">RSS</a>.</p>
+  {tags.length > 0 && (
+    <p>{tags.map((t) => <a class="tag" href={`/blog/tags/${t}/`}>{t}</a>)}</p>
+  )}
+  <PostList posts={posts} />
+</Base>
