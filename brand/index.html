@@ -50,8 +50,8 @@
   .mono { width:84px; height:84px; padding:0; display:flex; align-items:center; justify-content:center; border-radius:20px; }
 
   .stamp-demo { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
-  .stamp { display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); }
-  .stamp .sticker { padding:3px 10px 2px; box-shadow:2px 2px 0 var(--navy); border-width:2px; border-radius:10px 12px 11px 9px; }
+  a { color:inherit; text-decoration-color:var(--coral); text-decoration-thickness:2px; text-underline-offset:3px; }
+  .stamp { display:inline-flex; align-items:center; gap:8px; font-size:15px; font-style:italic; color:#5B6275; }
 
   .swatches { display:flex; flex-wrap:wrap; gap:16px; }
   .swatch { flex:1 1 180px; border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--surface); }
@@ -117,7 +117,9 @@
       <p class="muted">A soft, chunky serif whose letters won't stay in line, with a yellow crayon scribble behind "Silly". The grown-up one.</p>
       <ul class="rules">
         <li class="yes">Website header, blog, email signature</li>
+        <li class="yes">The "a Silly Willy app" stamp on each app's pages</li>
         <li class="yes">Anywhere it needs to sit calmly next to words</li>
+        <li class="no">Dark backgrounds (the scribble fringes; use the sticker)</li>
         <li class="no">Tiny sizes (use the monogram)</li>
         <li class="no">Adding "Apps" to it: the domain already says that</li>
       </ul>
@@ -131,7 +133,7 @@
       <h3 style="margin-top:14px">Sticker</h3>
       <p class="muted">Hand lettering on a crooked, hand-cut yellow badge with a chunky navy shadow. The playful one.</p>
       <ul class="rules">
-        <li class="yes">Social avatars, favicon, merch, the app stamp</li>
+        <li class="yes">Social avatars, link previews, merch, dark backgrounds</li>
         <li class="yes">Slightly tilted, as if slapped on a folder</li>
         <li class="no">Straightened, recoloured or stretched</li>
         <li class="no">On a busy photo with no plain space around it</li>
@@ -153,14 +155,12 @@
   </div>
 
   <h2>The app stamp</h2>
-  <p class="muted">Each app keeps its own look. Silly Willy only shows up as a small stamp: at the bottom of a store listing, in the credits, or on the app's own web page.</p>
-  <div class="card stamp-demo" style="margin-top:12px">
-    <div>
-      <div style="font-family:var(--serif);font-size:22px;font-weight:700">Dog Stories</div>
-      <div class="stamp">made by <span class="sticker"><span class="hand" style="font-size:16px">Silly Willy</span></span></div>
-    </div>
+  <p class="muted">Each app keeps its own look. Silly Willy only shows up as a small stamp: the wordmark between "a" and "app", linking to sillywillyapps.com. It goes in the footer of the app's web pages, at the bottom of a store listing, or in the credits.</p>
+  <div class="paper stamp-demo" style="margin-top:12px;min-height:0;flex-direction:column;gap:6px">
+    <div style="font-family:var(--serif);font-size:22px;font-weight:700">Dog Stories</div>
+    <div class="stamp">a <img src="logo/wordmark.png" alt="Silly Willy" width="150" style="height:auto"> app</div>
   </div>
-  <p class="note" style="margin-top:8px">In plain text, it reads: <b>Dog Stories · a Silly Willy app</b></p>
+  <p class="note" style="margin-top:8px">Live example: the footer of <a href="https://dogstories.sillywillyapps.com/">dogstories.sillywillyapps.com</a>. Keep it on a light background. In plain text, it reads: <b>Dog Stories · a Silly Willy app</b></p>
 
   <h2>Colours</h2>
   <div class="swatches">

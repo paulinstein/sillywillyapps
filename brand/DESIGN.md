@@ -22,8 +22,8 @@ Silly Willy Apps is Paul's hobby label for his own apps and games. He works by d
 
 ## Decisions (made by Paul)
 - Logo system: **wordmark plus sticker** (the blend of directions C and D).
-  - Wordmark: a soft, chunky serif with letters that won't stay in line, and a yellow crayon scribble behind "Silly". Used in the site header, the blog and calm places.
-  - Sticker: "Silly Willy" hand-lettered on a crooked, hand-cut yellow badge with a chunky navy offset shadow, and "apps & games" in italic. Used for the app icon, social avatars, the favicon and the "a Silly Willy app" stamp.
+  - Wordmark: a soft, chunky serif with letters that won't stay in line, and a yellow crayon scribble behind "Silly". Used in the site header, the blog, calm places on light backgrounds, and the "a Silly Willy app" stamp on each app's pages (changed from the sticker on 2026-11-13, at Paul's request).
+  - Sticker: "Silly Willy" hand-lettered on a crooked, hand-cut yellow badge with a chunky navy offset shadow, and "apps & games" in italic. Used for social avatars, link previews and dark backgrounds.
   - Monogram: "SW" on a small sticker for tight spaces.
 - Money: **no ads, ever.** Small optional purchases (like Dog Stories' +50 Energy) are fine, and so is pay-once-play-it-all.
 
