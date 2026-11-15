@@ -31,7 +31,7 @@ Silly Willy Apps is Paul's hobby label for his own apps and games. He works by d
 - Palette: ink navy #1F2A44, crayon yellow #FFD84D, coral #E8604C, paper cream #FBF6EA.
 - Mockup fonts: Fraunces (soft, wonky serif), Caveat Brush (hand lettering), DM Sans (body). They stand in for ChatGPT's hand-drawn art, and Fraunces and DM Sans may also serve as the site's real web fonts.
 - Promise line: "No ads. Just fun things I like making."
-- Tagline ideas: "Apps & games, the way they used to be fun." / "Seriously un-serious apps." / "Made after hours, made with joy."
+- Tagline ideas: "Apps & games, the way they used to be — fun." / "Seriously un-serious apps." / "Made after hours, made with joy."
 - About Me: a short story, not a CV. Games that ended, the day job (kept vague), what he makes at night, and a thank-you to players.
 
 ## Approaches considered

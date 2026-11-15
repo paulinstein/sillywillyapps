@@ -17,7 +17,7 @@ test('app without store links says coming soon', () => {
 test('home has promise and tagline', () => {
   const home = readPage('/');
   assert.match(home, /No ads\. Just fun things I like making\./);
-  assert.match(home, /Apps &amp; games, the way they used to be fun\./);
+  assert.match(home, /Apps &amp; games, the way they used to be — fun\./);
   assert.match(home, /Dog Stories/);
 });
 
