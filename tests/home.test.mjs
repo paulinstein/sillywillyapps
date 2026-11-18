@@ -8,10 +8,11 @@ test('apps page lists dog stories', () => {
   assert.match(apps, /href="https:\/\/dogstories\.sillywillyapps\.com"/);
 });
 
-test('app without store links says coming soon', () => {
+test('Dog Stories links to the App Store and says Google Play is coming', () => {
   const apps = readPage('apps/');
-  assert.match(apps, /Coming soon to the App Store and Google Play/);
-  assert.doesNotMatch(apps, /apps\.apple\.com|play\.google\.com/);
+  assert.match(apps, /href="https:\/\/apps\.apple\.com\/app\/id6831840230"/);
+  assert.match(apps, /Coming soon to Google Play/);
+  assert.doesNotMatch(apps, /play\.google\.com/);
 });
 
 test('home has promise and tagline', () => {

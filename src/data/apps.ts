@@ -18,6 +18,7 @@ export const apps: App[] = [
     pitch: 'A merge game full of heartwarming stories about dogs and their people.',
     icon: dogStoriesIcon,
     website: 'https://dogstories.sillywillyapps.com',
+    appStore: 'https://apps.apple.com/app/id6831840230',
   },
 ];
 
