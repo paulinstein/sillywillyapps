@@ -10,6 +10,14 @@ test('privacy page', () => {
   assert.match(readPage('privacy/'), /doesn(’|'|&#39;)t collect/);
 });
 
+test('Fact Rally pages', () => {
+  assert.match(readPage('fact-rally/'), /Fact Rally/);
+  assert.match(readPage('fact-rally/'), /support@sillywillyapps\.com/);
+  assert.match(readPage('fact-rally/privacy/'), /doesn(’|'|&#39;)t collect any information/);
+  assert.match(readPage('privacy/'), /href="\/fact-rally\/privacy\/"/);
+  assert.match(readPage('apps/'), /href="\/fact-rally\/"/);
+});
+
 test('404 page', () => {
   assert.ok(exists('404.html'));
   assert.match(readPage('404.html'), /href="\/"/);

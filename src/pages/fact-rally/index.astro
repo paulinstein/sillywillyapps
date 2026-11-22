@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import icon from '../../assets/apps/fact-rally.png';
+import race from '../../assets/apps/fact-rally-race.png';
+import results from '../../assets/apps/fact-rally-results.png';
+---
+<Base title="Fact Rally" description="Fact Rally is a math facts race for kids in grades 1 to 5. No ads, no accounts, no tracking.">
+  <header class="hero">
+    <Image src={icon} alt="" width={96} densities={[1, 2]} class="icon" />
+    <div>
+      <h1>Fact Rally</h1>
+      <p class="lede">Math facts practice that's a race. Every right answer moves your car, and quick answers give it a turbo boost.</p>
+      <p class="soon muted">Coming soon to the App Store and Google Play</p>
+    </div>
+  </header>
+
+  <div class="shots">
+    <Image src={race} alt="A race track with four cars above the fact 8 × 0 and a big number pad" width={260} densities={[1, 2]} class="shot" />
+    <Image src={results} alt="Round results: three stars, You won the race, and the finishing order" width={260} densities={[1, 2]} class="shot" />
+  </div>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Race to the flag.</strong> Beat Turbo Turtle, Zoom Zebra and Rocket Rabbit. Get every fact right and you win.</li>
+    <li><strong>Grades 1 to 5.</strong> Start from a grade: adding and subtracting, times tables, dividing, or a mix of all four.</li>
+    <li><strong>Your own facts.</strong> Pick the operations and numbers, focus on one times table, or type in this week's homework.</li>
+    <li><strong>Mistakes are pit stops.</strong> Kids see the right answer, and the fact comes back until it sticks.</li>
+    <li><strong>No ads, no accounts, no tracking.</strong> Everything stays on the device. See the <a href="/fact-rally/privacy/">privacy policy</a>.</li>
+  </ul>
+
+  <h2>Help</h2>
+  <p>Questions, ideas or something not working? Email <a href="mailto:support@sillywillyapps.com">support@sillywillyapps.com</a>.</p>
+</Base>
+
+<style>
+  .hero { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 24px; }
+  .icon { border-radius: 22px; flex: none; width: 96px; height: 96px; }
+  h1 { margin: 0 0 6px; }
+  .lede { font-size: 1.15rem; margin: 0 0 8px; }
+  .soon { margin: 0; font-size: 15px; }
+  .shots { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+  .shot { width: 260px; max-width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); }
+  @media (max-width: 420px) { .hero { flex-direction: column; } }
+</style>
