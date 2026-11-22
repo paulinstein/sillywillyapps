@@ -1,0 +1,45 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import icon from '../../assets/apps/wordy-gerdy.png';
+import readIt from '../../assets/apps/wordy-gerdy-read.png';
+import hearIt from '../../assets/apps/wordy-gerdy-hear.png';
+---
+<Base title="Wordy Gerdy" description="Wordy Gerdy is a sight word flashcard game for kids in grades 1 to 5. No ads, no accounts, no tracking.">
+  <header class="hero">
+    <Image src={icon} alt="" width={96} densities={[1, 2]} class="icon" />
+    <div>
+      <h1>Wordy Gerdy</h1>
+      <p class="lede">Sight word practice that's a game. Flip a card, read the word, and earn points, streaks and stars.</p>
+      <p class="soon muted">Coming soon to the App Store and Google Play</p>
+    </div>
+  </header>
+
+  <div class="shots">
+    <Image src={readIt} alt="A flashcard showing the word an, with Got it and Not yet buttons below" width={260} densities={[1, 2]} class="shot" />
+    <Image src={hearIt} alt="Hear the word button above three word choices: make, run and my" width={260} densities={[1, 2]} class="shot" />
+  </div>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Read it.</strong> Your child reads the card out loud and a grown-up taps Got it or Not yet. Great for reading together.</li>
+    <li><strong>Hear it, find it.</strong> Wordy Gerdy says the word and your child taps the match from three look-alike words, all on their own.</li>
+    <li><strong>Grades 1 to 5.</strong> Start with word lists from kindergarten to grade 3, or paste in this week's words from school.</li>
+    <li><strong>Practice where it counts.</strong> Missed words come back later in the round and lead off the next one.</li>
+    <li><strong>No ads, no accounts, no tracking.</strong> Everything stays on the device. See the <a href="/wordy-gerdy/privacy/">privacy policy</a>.</li>
+  </ul>
+
+  <h2>Help</h2>
+  <p>Questions, ideas or something not working? Email <a href="mailto:support@sillywillyapps.com">support@sillywillyapps.com</a>.</p>
+</Base>
+
+<style>
+  .hero { display: flex; gap: 20px; align-items: flex-start; margin-bottom: 24px; }
+  .icon { border-radius: 22px; flex: none; width: 96px; height: 96px; }
+  h1 { margin: 0 0 6px; }
+  .lede { font-size: 1.15rem; margin: 0 0 8px; }
+  .soon { margin: 0; font-size: 15px; }
+  .shots { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+  .shot { width: 260px; max-width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); }
+  @media (max-width: 420px) { .hero { flex-direction: column; } }
+</style>
