@@ -12,6 +12,7 @@ test('privacy page', () => {
 
 test('Fact Rally pages', () => {
   assert.match(readPage('fact-rally/'), /Fact Rally/);
+  assert.match(readPage('fact-rally/'), /support@sillywillyapps\.com/);
   assert.match(readPage('fact-rally/privacy/'), /doesn(’|'|&#39;)t collect any information/);
   assert.match(readPage('privacy/'), /href="\/fact-rally\/privacy\/"/);
   assert.match(readPage('apps/'), /href="\/fact-rally\/"/);
