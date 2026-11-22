@@ -1,6 +1,7 @@
 import type { ImageMetadata } from 'astro';
 import dogStoriesIcon from '../assets/apps/dog-stories.png';
 import factRallyIcon from '../assets/apps/fact-rally.png';
+import wordyGerdyIcon from '../assets/apps/wordy-gerdy.png';
 
 export interface App {
   name: string;
@@ -14,6 +15,12 @@ export interface App {
 
 /** Newest first. Adding an app is one more entry here. */
 export const apps: App[] = [
+  {
+    name: 'Wordy Gerdy',
+    pitch: 'Sight word flashcards for grades 1 to 5. Read it, hear it, find it, and earn stars.',
+    icon: wordyGerdyIcon,
+    website: '/wordy-gerdy/',
+  },
   {
     name: 'Fact Rally',
     pitch: 'A math facts race for grades 1 to 5. Answer fast, pass the cars, win the race.',

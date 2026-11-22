@@ -18,6 +18,14 @@ test('Fact Rally pages', () => {
   assert.match(readPage('apps/'), /href="\/fact-rally\/"/);
 });
 
+test('Wordy Gerdy pages', () => {
+  assert.match(readPage('wordy-gerdy/'), /Wordy Gerdy/);
+  assert.match(readPage('wordy-gerdy/'), /support@sillywillyapps\.com/);
+  assert.match(readPage('wordy-gerdy/privacy/'), /doesn(’|'|&#39;)t collect any information/);
+  assert.match(readPage('privacy/'), /href="\/wordy-gerdy\/privacy\/"/);
+  assert.match(readPage('apps/'), /href="\/wordy-gerdy\/"/);
+});
+
 test('404 page', () => {
   assert.ok(exists('404.html'));
   assert.match(readPage('404.html'), /href="\/"/);
