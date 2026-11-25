@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import icon from '../../assets/apps/fact-rally.png';
 import race from '../../assets/apps/fact-rally-race.png';
 import results from '../../assets/apps/fact-rally-results.png';
+import make from '../../assets/apps/fact-rally-make.png';
 ---
 <Base title="Fact Rally" description="Fact Rally is a math facts race for kids in grades 1 to 5. No ads, no accounts, no tracking.">
   <header class="hero">
@@ -17,7 +18,8 @@ import results from '../../assets/apps/fact-rally-results.png';
 
   <div class="shots">
     <Image src={race} alt="The player's car crossing the finish line ahead of three rivals, with a green strip saying You finished 1st! above the fact 8 × 2 = 16" width={260} densities={[1, 2]} class="shot" />
-    <Image src={results} alt="Round results: three stars, You won the race, and the finishing order" width={260} densities={[1, 2]} class="shot" />
+    <Image src={results} alt="Round results: Superstar!, three stars, You won the race, and the finishing order" width={260} densities={[1, 2]} class="shot" />
+    <Image src={make} alt="Making your own facts: pick a grade, the operations, numbers up to 10, and focus on the 7s" width={260} densities={[1, 2]} class="shot" />
   </div>
 
   <h2>What it does</h2>
@@ -46,7 +48,7 @@ import results from '../../assets/apps/fact-rally-results.png';
   h1 { margin: 0 0 6px; }
   .lede { font-size: 1.15rem; margin: 0 0 8px; }
   .soon { margin: 0; font-size: 15px; }
-  .shots { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
-  .shot { width: 260px; max-width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); }
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .shot { width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); }
   @media (max-width: 420px) { .hero { flex-direction: column; } }
 </style>

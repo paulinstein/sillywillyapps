@@ -4,6 +4,7 @@ import Base from '../../layouts/Base.astro';
 import icon from '../../assets/apps/wordy-gerdy.png';
 import readIt from '../../assets/apps/wordy-gerdy-read.png';
 import hearIt from '../../assets/apps/wordy-gerdy-hear.png';
+import stars from '../../assets/apps/wordy-gerdy-stars.png';
 ---
 <Base title="Wordy Gerdy" description="Wordy Gerdy is a sight word flashcard game for kids in grades 1 to 5. No ads, no accounts, no tracking.">
   <header class="hero">
@@ -18,6 +19,7 @@ import hearIt from '../../assets/apps/wordy-gerdy-hear.png';
   <div class="shots">
     <Image src={readIt} alt="Gerdy the monster smiling after eating a word, with a green speech bubble that says Tasty word!" width={260} densities={[1, 2]} class="shot" />
     <Image src={hearIt} alt="A big Gerdy asking Which word did I say? above three word choices: my, make and help, with a speaker button at the top" width={260} densities={[1, 2]} class="shot" />
+    <Image src={stars} alt="End of round: a happy Gerdy, Superstar!, three stars, 3 of 3 on the first try and confetti" width={260} densities={[1, 2]} class="shot" />
   </div>
 
   <h2>What it does</h2>
@@ -45,7 +47,7 @@ import hearIt from '../../assets/apps/wordy-gerdy-hear.png';
   h1 { margin: 0 0 6px; }
   .lede { font-size: 1.15rem; margin: 0 0 8px; }
   .soon { margin: 0; font-size: 15px; }
-  .shots { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
-  .shot { width: 260px; max-width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); }
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .shot { width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--line); }
   @media (max-width: 420px) { .hero { flex-direction: column; } }
 </style>
