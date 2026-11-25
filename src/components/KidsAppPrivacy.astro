@@ -1,0 +1,30 @@
+---
+import Base from '../layouts/Base.astro';
+
+interface Props {
+  name: string;
+  slug: string;
+  /** Extra notes about device features the app uses, one per item. */
+  notes?: string[];
+}
+const { name, slug, notes = [] } = Astro.props;
+---
+<Base title={`${name} privacy`} description={`${name} doesn't collect anything about you or your child.`}>
+  <h1>{name} privacy policy</h1>
+  <p class="muted">Last updated November 24, 2026</p>
+  <p>Short version: {name} doesn't collect anything about you or your child.</p>
+  <ul>
+    <li>No accounts or sign-ups.</li>
+    <li>No ads. Ever.</li>
+    <li>No analytics, tracking, or crash reporting.</li>
+    <li>No in-app purchases.</li>
+    <li>No links out of the app.</li>
+    <li>The app doesn't connect to the internet.</li>
+  </ul>
+  <p>Progress, settings, and any word or fact lists you add are saved only on your device. Nothing is sent to me or to anyone else. Deleting the app deletes all of it.</p>
+  {notes.map((note) => <p>{note}</p>)}
+  <h2>Children</h2>
+  <p>{name} is made for kids. Because it collects no personal information from anyone, it collects none from children, and it meets the Apple Kids category and Google Play Families rules.</p>
+  <h2>Questions</h2>
+  <p>Email <a href="mailto:support@sillywillyapps.com">support@sillywillyapps.com</a>. If this policy ever changes, the new version will be posted here at <a href={`/${slug}/privacy/`}>sillywillyapps.com/{slug}/privacy/</a> before the app changes.</p>
+</Base>

@@ -1,0 +1,11 @@
+---
+import KidsAppPage from '../../components/KidsAppPage.astro';
+import { apps } from '../../data/apps';
+const app = apps.find((a) => a.name === 'Fact Rally')!;
+---
+<KidsAppPage app={app} slug="fact-rally" features={[
+  'Every right answer moves your car down the track, and quick answers give it a turbo boost.',
+  'Start from a grade: adding and subtracting, times tables, or dividing, up to mixed review.',
+  'Make your own lists, or type in the facts from this week\'s homework.',
+  'A big number pad, so there is no fiddly keyboard.',
+]} />

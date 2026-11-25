@@ -1,0 +1,11 @@
+---
+import KidsAppPage from '../../components/KidsAppPage.astro';
+import { apps } from '../../data/apps';
+const app = apps.find((a) => a.name === 'Wordy Gerdy')!;
+---
+<KidsAppPage app={app} slug="wordy-gerdy" features={[
+  'Read it: your child reads the card out loud and a grown-up taps Got it or Not yet.',
+  'Hear it, find it: Wordy Gerdy says the word and your child taps the match.',
+  'Word lists from kindergarten to grade 3, plus your own lists from school.',
+  'Missed words come back, so practice goes where it is needed.',
+]} />

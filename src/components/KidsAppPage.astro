@@ -1,0 +1,40 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import type { App } from '../data/apps';
+
+interface Props {
+  app: App;
+  slug: string;
+  features: string[];
+}
+const { app, slug, features } = Astro.props;
+---
+<Base title={app.name} description={app.pitch}>
+  <div class="hero">
+    <Image src={app.icon} alt="" width={96} densities={[1, 2]} class="icon" />
+    <div>
+      <h1>{app.name}</h1>
+      <p>{app.pitch}</p>
+    </div>
+  </div>
+  <ul>
+    {features.map((f) => <li>{f}</li>)}
+  </ul>
+  <p>
+    {app.appStore && <a href={app.appStore}>App Store</a>}
+    {app.appStore && app.googlePlay && ' · '}
+    {app.googlePlay && <a href={app.googlePlay}>Google Play</a>}
+    {!app.appStore && !app.googlePlay && <span class="muted">Coming soon to the App Store and Google Play.</span>}
+  </p>
+  <h2>Help</h2>
+  <p>Questions, ideas, or something not working? Email <a href="mailto:support@sillywillyapps.com">support@sillywillyapps.com</a> and I'll get back to you.</p>
+  <p><a href={`/${slug}/privacy/`}>{app.name} privacy policy</a></p>
+</Base>
+
+<style>
+  .hero { display: flex; gap: 16px; align-items: center; }
+  .icon { border-radius: 22px; flex: none; width: 96px; height: 96px; }
+  .hero h1 { margin: 0 0 4px; }
+  .hero p { margin: 0; }
+</style>

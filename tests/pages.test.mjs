@@ -25,3 +25,11 @@ test('no double-escaped text', () => {
     assert.doesNotMatch(readPage(page), /&amp;amp;/, `${page} has double-escaped "&"`);
   }
 });
+
+for (const slug of ['wordy-gerdy', 'fact-rally']) {
+  test(`${slug} support and privacy pages`, () => {
+    assert.match(readPage(`${slug}/`), /support@sillywillyapps\.com/);
+    assert.match(readPage(`${slug}/`), new RegExp(`href="/${slug}/privacy/"`));
+    assert.match(readPage(`${slug}/privacy/`), /doesn(’|'|&#39;)t collect anything/);
+  });
+}
